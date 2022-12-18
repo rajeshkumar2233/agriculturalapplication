@@ -1,12 +1,12 @@
-const express = require('express');
-const bodyParser = require('body-parser');
-const route = require('./routes/route');
-const { default: mongoose } = require('mongoose');
-const app = express();
+const express=require("express")
+const bodyParser=require("body-parser")
+const mongoose=require("mongoose")
+const route=require("./route/route")
+const app=express()
 
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: true }));
 
+app.use(bodyParser.json())
+mongoose.set('strictQuery', false);
 
 mongoose.connect("mongodb+srv://rajeshkumar2233:9691501076Rj@cluster0.mrghs.mongodb.net/agticuture", {
         useNewUrlParser: true
@@ -14,7 +14,7 @@ mongoose.connect("mongodb+srv://rajeshkumar2233:9691501076Rj@cluster0.mrghs.mong
     .then(() => console.log("MongoDb is connected"))
     .catch(err => console.log(err))
 
-
+   
 app.use('/', route)
 
 
